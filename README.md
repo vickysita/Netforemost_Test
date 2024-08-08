@@ -9,3 +9,4 @@ You can create your account in OpenWeather and consume the API with your Api Key
 * https://openweathermap.org/current#name
 * https://openweathermap.org/bulk
 
+![home](https://github.com/user-attachments/assets/d8f72ae7-4197-4e6b-ba46-98ae132229c8)
