@@ -17,12 +17,17 @@ class AddNewLocationForm extends ConsumerState<AddNewLocationPage> {
   final TextEditingController _controller = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   final FocusNode _cityFocusNode = FocusNode();
-  String _query = '';
-  List<City> _cities = [];
-  List<City> _filteredCities = [];
+  String _query = ''; //Query para filtrar el listado de ciudades
+  List<City> _cities = []; //Lista de las ciudades
+  List<City> _filteredCities =
+      []; //Lista de las ciudades que hacen match con el filtrado de busqueda
   final PreferencesService _preferencesService = PreferencesService();
-  bool _isCitySelected = false;
-  bool _isDescriptionFilled = false;
+
+  //Banderas para confirmar información en el formulario y habilitar el botón de Guardar
+  bool _isCitySelected =
+      false; //Bandera para verificar si la ciudad ya fue seleccionada
+  bool _isDescriptionFilled =
+      false; //Bnadera para verificar si hay una descripción
 
   @override
   void initState() {
@@ -33,10 +38,11 @@ class AddNewLocationForm extends ConsumerState<AddNewLocationPage> {
   Future<void> _loadCities() async {
     final cities = await loadCities();
     setState(() {
-      _cities = cities;
+      _cities = cities; //Cargar las ciudades
     });
   }
 
+//Filtrar las ciudades que hacen match con el input
   void _onCityChanged(String value) {
     setState(() {
       _query = value;
@@ -182,6 +188,7 @@ class AddNewLocationForm extends ConsumerState<AddNewLocationPage> {
     );
   }
 
+//Listado de ciudades que hacen match con la API de openweathermap
   Future<List<City>> loadCities() async {
     final String response = await rootBundle.loadString('assets/cities.json');
     final data = await json.decode(response) as List;
