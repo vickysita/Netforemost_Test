@@ -12,7 +12,7 @@ class LocationService {
 
   //Obtener información del clima dependiendo de la ciudad proporcionada
   Future<Weather> getWeather(String city) async {
-    const apiKey = '74db58e3c5af0edf5421f281a75fbfaf';
+    const apiKey = '74db58e3c5af0edf5421f281a75fbfaf'; //Cambia a tu API KEY
 
     try {
       final response = await _dio.get(
